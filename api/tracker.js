@@ -5,7 +5,9 @@ export default function handler(req, res) {
 
     // Log the data (you can use a database instead of console.log)
     console.log(`IP: ${ip} | Time: ${time} | User-Agent: ${userAgent}`);
-
+    navigator.geolocation.getCurrentPosition((position) => {
+        console.log(position.coords.latitude, position.coords.longitude);
+    });
     // Redirect to the target website
     res.writeHead(302, { Location: "https://destination.com" });
     res.end();
